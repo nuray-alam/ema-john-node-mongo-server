@@ -53,6 +53,12 @@ async function run() {
         })
 
         //Add orders API
+
+        app.get('/orders', async (req, res) => {
+            const cursor = orderCollection.find({});
+            const orders = await cursor.toArray();
+            res.json(orders);
+        })
         app.post('/orders', async (req, res) => {
 
             const order = req.body;
